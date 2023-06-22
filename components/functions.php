@@ -59,7 +59,7 @@ function GetData($pdo) // The variable must contain the connection of mysql via 
 
 function AddCode($pdo, $title, $code, $uploaddate)
 {
-    $query = "INSERT INTO code (title, code, uploaddate, codeid) VALUES (:title, :code, uploaddate, codeid)";
+    $query = "INSERT INTO code (title, code, uploaddate, codeid) VALUES (:title, :code, :uploaddate, :codeid)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([
         'title' => $title,

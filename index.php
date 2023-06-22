@@ -15,15 +15,18 @@ require_once("components/functions.php");
 </head>
 
 <body>
-    <?php
+    <form method="post">
+        <?php
 
-    foreach (GetData($pdo) as $code) {
-        echo $code['title'];
-        echo "<pre>" . htmlspecialchars($code['code']) . "</pre>";
-        echo $code['uploaddate'];
-    }
+        foreach (GetData($pdo) as $code) {
+            echo $code['title'];
+            echo "<pre>" . htmlspecialchars($code['code']) . "</pre>";
+            echo $code['uploaddate'];
+            echo "<a href='pages/viewcode.php?codeid={$code['codeid']}'>view</a>";
+        }
 
-    ?>
+        ?>
+    </form>
 </body>
 
 </html>

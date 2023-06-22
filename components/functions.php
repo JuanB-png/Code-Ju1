@@ -65,6 +65,7 @@ function AddCode($pdo, $title, $code, $uploaddate, $codeid)
         'title' => $title,
         'code' => $code,
         'uploaddate' => $uploaddate,
-        'codeid' => $codeid,
+        'codeid' => RandomCharacters(128),
     ]);
 }
+?>

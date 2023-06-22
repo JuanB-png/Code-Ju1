@@ -1,7 +1,8 @@
 <?php
-
-require_once("database/dbconnect.php");
-require_once("components/functions.php");
+$uploaddate = date('m/d/Y');
+require_once("../database/dbconnect.php");
+require_once("../components/functions.php");
+AddCode($pdo, $_POST["title"] , $_POST["code"] , $uploaddate);
 
 ?>
 
@@ -12,10 +13,13 @@ require_once("components/functions.php");
     
 </head>
 <body>
-    <form method="post">
 
+    <form method="post">
+<input type="text" name="title">
+<textarea name="code" id="" cols="30" rows="10"></textarea>
+<button type="submit"></button>
+    </form>
 
     
-    </form>
 </body>
 </html>

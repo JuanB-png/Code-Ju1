@@ -49,7 +49,7 @@ function SearchData($pdo, $search) // The variable must contain the connection o
 
 function GetData($pdo) // The variable must contain the connection of mysql via PDO and user must specify with 0 or 1 if it's trash. (0 is not trash) (1 is trash)
 {
-    $query = "SELECT * FROM code"; // Get everything from the table uploads based on the users id and if it's trash
+    $query = "SELECT * FROM code"; // Get everything from the table uploads based on the users id
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute(); // Exectuting the query and putting in all the data
 
@@ -57,7 +57,7 @@ function GetData($pdo) // The variable must contain the connection of mysql via 
     return $codeindatabase; // This is the output for all the data
 }
 
-function AddCode($pdo, $title, $code, $uploaddate, $codeid)
+function AddCode($pdo, $title, $code, $uploaddate)
 {
     $query = "INSERT INTO code (title, code, uploaddate, codeid) VALUES (:title, :code, uploaddate, codeid)";
     $stmt = $pdo->prepare($query);
@@ -67,5 +67,16 @@ function AddCode($pdo, $title, $code, $uploaddate, $codeid)
         'uploaddate' => $uploaddate,
         'codeid' => RandomCharacters(128),
     ]);
+}
+
+function ViewSpecific($pdo, $codeid) {
+    $query = "SELECT * FROM code WHERE codeid = :codeid"; // Get everything from the table uploads based on the users id
+    $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
+    $stmt->execute([
+        "codeid" => $codeid
+    ]); // Exectuting the query and putting in all the data
+
+    $codeindatabase = $stmt->fetch(PDO::FETCH_ASSOC); // All the file locations are in the variable
+    return $codeindatabase; // This is the output for all the data
 }
 ?>

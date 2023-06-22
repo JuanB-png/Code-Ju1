@@ -22,7 +22,7 @@ require_once("components/functions.php");
             echo $code['title'];
             echo "<pre>" . htmlspecialchars($code['code']) . "</pre>";
             echo $code['uploaddate'];
-            echo "<a href='pages/viewcode.php?id={$code['codeid']}'>view</a>";
+            echo "<a href='pages/viewcode.php?codeid={$code['codeid']}'>view</a>";
         }
 
         ?>

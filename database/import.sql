@@ -6,5 +6,6 @@ CREATE TABLE code (
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	title varchar(255) NOT NULL,
     code TEXT NOT NULL,
-    uploaddate DATE
+    uploaddate DATE,
+    codeid varchar(255)
 );

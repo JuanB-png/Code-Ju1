@@ -79,4 +79,15 @@ function ViewSpecific($pdo, $codeid) {
     $codeindatabase = $stmt->fetch(PDO::FETCH_ASSOC); // All the file locations are in the variable
     return $codeindatabase; // This is the output for all the data
 }
+
+function EditCode($pdo, $title, $code, $codeid)
+{
+    $query = "UPDATE code SET title = :title, code = :code WHERE codeid = :codeid";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([
+        'title' => $title,
+        'code' => $code,
+        'codeid' => $codeid
+    ]);
+}
 ?>

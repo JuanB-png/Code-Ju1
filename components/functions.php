@@ -38,7 +38,7 @@ function StorageLeft()
 
 function SearchData($pdo, $search) // The variable must contain the connection of mysql via PDO and user must specify with 0 or 1 if it's trash. (0 is not trash) (1 is trash) and what you're searching for
 {
-    $query = "SELECT * FROM code WHERE title LIKE :search"; // Select all from the table uploads where the user id is from the user and trash is trash given in the function and the thing the user is looking for
+    $query = "SELECT * FROM code WHERE title LIKE :search OR code LIKE :search"; // Select all from the table uploads where the user id is from the user and trash is trash given in the function and the thing the user is looking for
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // execute the prepared statements
         'search' => "%" . $search . "%" // Added percentages in front of the search and after the search so it can check any position of the string
@@ -80,14 +80,15 @@ function ViewSpecific($pdo, $codeid) {
     return $codeindatabase; // This is the output for all the data
 }
 
-function EditCode($pdo, $title, $code, $codeid)
+function EditCode($pdo, $title, $code, $codeid, $uploaddate)
 {
-    $query = "UPDATE code SET title = :title, code = :code WHERE codeid = :codeid";
+    $query = "UPDATE code SET title = :title, code = :code, uploaddate = :uploaddate WHERE codeid = :codeid";
     $stmt = $pdo->prepare($query);
     $stmt->execute([
         'title' => $title,
         'code' => $code,
-        'codeid' => $codeid
+        'codeid' => $codeid,
+        'uploaddate' => $uploaddate
     ]);
 }
 ?>

@@ -17,14 +17,14 @@ $codedata = ViewSpecific($pdo, $_GET['codeid']);
 </head>
 
 <body>
-    <?php
+    <?php require_once("../components/navbar.php"); ?>
 
+    <?php
 
     echo $codedata['title'];
     echo "<pre>" . htmlspecialchars($codedata['code']) . "</pre>";
     echo $codedata['uploaddate'];
     echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
-
 
     ?>
 </body>

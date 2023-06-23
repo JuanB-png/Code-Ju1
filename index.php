@@ -15,6 +15,8 @@ require_once("components/functions.php");
 </head>
 
 <body>
+    <?php require_once("components/navbar.php"); ?>
+
     <form method="post">
         <?php echo "Storage left on server: " . StorageLeft(); ?>
         <p></p>
@@ -22,10 +24,18 @@ require_once("components/functions.php");
         <div class="cards-layout">
             <?php
 
-            foreach (GetData($pdo) as $code) {
-                echo "<p>Title: {$code['title']}</p>";
-                echo "<p>Upload date: {$code['uploaddate']}</p>";
-                echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
+            if (!isset($_SESSION['search'])) {
+                foreach (GetData($pdo) as $code) {
+                    echo "<p>Title: {$code['title']}</p>";
+                    echo "<p>Upload date: {$code['uploaddate']}</p>";
+                    echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
+                }
+            } else {
+                foreach (SearchData($pdo, $_SESSION['search']) as $code) {
+                    echo "<p>Title: {$code['title']}</p>";
+                    echo "<p>Upload date: {$code['uploaddate']}</p>";
+                    echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
+                }
             }
 
             ?>

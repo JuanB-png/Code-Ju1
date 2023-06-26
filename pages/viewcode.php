@@ -27,9 +27,10 @@ $codedata = ViewSpecific($pdo, $_GET['codeid']);
     <?php require_once("../components/navbar.php"); ?>
 
     <?php
-    echo $codedata['title'];
-    echo "<pre><code class='php'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
-    echo $codedata['uploaddate'];
+    echo "<p>{$codedata['title']}</p>";
+    echo "<p>{$codedata['language']}</p>";
+    echo "<pre><code class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
+    echo "<p>{$codedata['uploaddate']}</p>";
     echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
     ?>
 </body>

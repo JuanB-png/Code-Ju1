@@ -7,5 +7,6 @@ CREATE TABLE code (
 	title varchar(255) NOT NULL,
     code TEXT NOT NULL,
     uploaddate DATE,
-    codeid varchar(255)
+    codeid varchar(255),
+    language varchar(255)
 );

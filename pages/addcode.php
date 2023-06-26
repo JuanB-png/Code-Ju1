@@ -4,8 +4,8 @@ require_once("../database/dbconnect.php");
 require_once("../components/functions.php");
 
 if (isset($_POST["title"])) {
-    if (!empty($_POST["code"]) && !empty($_POST["title"]))
-        AddCode($pdo, $_POST["title"], $_POST["code"], $uploaddate);
+    if (!empty($_POST["code"]) && !empty($_POST["title"]) && !empty($_POST['language']))
+        AddCode($pdo, $_POST["title"], $_POST["code"], $uploaddate, strtolower($_POST['language']));
     header("location: ../");
     exit();
 }
@@ -25,6 +25,7 @@ if (isset($_POST["title"])) {
 <body>
     <form method="post">
         <input placeholder="Title" type="text" name="title">
+        <input placeholder="Programming language" type="text" name="language">
         <textarea placeholder="Your code" name="code" id="" cols="30" rows="10"></textarea>
         <button type="submit">Upload code</button>
     </form>

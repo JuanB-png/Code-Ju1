@@ -49,7 +49,7 @@ function SearchData($pdo, $search) // The variable must contain the connection o
 
 function GetData($pdo) // The variable must contain the connection of mysql via PDO and user must specify with 0 or 1 if it's trash. (0 is not trash) (1 is trash)
 {
-    $query = "SELECT * FROM code"; // Get everything from the table uploads based on the users id
+    $query = "SELECT * FROM code"; // Get everything from the table code
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute(); // Exectuting the query and putting in all the data
 
@@ -59,9 +59,9 @@ function GetData($pdo) // The variable must contain the connection of mysql via 
 
 function AddCode($pdo, $title, $code, $uploaddate)
 {
-    $query = "INSERT INTO code (title, code, uploaddate, codeid) VALUES (:title, :code, :uploaddate, :codeid)";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([
+    $query = "INSERT INTO code (title, code, uploaddate, codeid) VALUES (:title, :code, :uploaddate, :codeid)"; // Insert query to put in all data
+    $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
+    $stmt->execute([ // Exectuting the query and putting in all the data
         'title' => $title,
         'code' => $code,
         'uploaddate' => $uploaddate,
@@ -70,7 +70,7 @@ function AddCode($pdo, $title, $code, $uploaddate)
 }
 
 function ViewSpecific($pdo, $codeid) {
-    $query = "SELECT * FROM code WHERE codeid = :codeid"; // Get everything from the table uploads based on the users id
+    $query = "SELECT * FROM code WHERE codeid = :codeid"; // Get everything from the table code where the code id is that
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([
         "codeid" => $codeid
@@ -82,9 +82,9 @@ function ViewSpecific($pdo, $codeid) {
 
 function EditCode($pdo, $title, $code, $codeid, $uploaddate)
 {
-    $query = "UPDATE code SET title = :title, code = :code, uploaddate = :uploaddate WHERE codeid = :codeid";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([
+    $query = "UPDATE code SET title = :title, code = :code, uploaddate = :uploaddate WHERE codeid = :codeid"; // Update query to change data about info
+    $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
+    $stmt->execute([ // Exectuting the query and putting in all the data
         'title' => $title,
         'code' => $code,
         'codeid' => $codeid,

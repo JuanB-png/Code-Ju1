@@ -25,10 +25,17 @@ if (isset($_POST["title"])) {
 <body>
     <form method="post">
         <input placeholder="Title" type="text" name="title">
-        <input placeholder="Programming language" type="text" name="language">
+        <select name="language">
+            <?php
+            foreach ($programminglanguages as $language => $alias) {
+                echo "<option value='{$alias}'>{$language}</option>";
+            }
+            ?>
+        </select>
         <textarea placeholder="Your code" name="code" id="" cols="30" rows="10"></textarea>
         <button type="submit">Upload code</button>
     </form>
+    <a href="../">Home</a>
 </body>
 
 </html>

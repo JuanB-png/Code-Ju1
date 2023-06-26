@@ -1,5 +1,20 @@
 <?php
 
+$programminglanguages = [
+    "PHP" => "php",
+    "Rust" => "rs",
+    "C++" => "cpp",
+    "C" => "c",
+    "C#" => "cs",
+    "HTML" => "html",
+    "CSS" => "css",
+    "PHP" => "php",
+    "Python" => "py",
+    "Javascript" => "js",
+    "Kotlin" => "kt",
+    "SQL" => "sql"
+];
+
 function RandomCharacters($length) // Function must be called with a length
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'; // All characters that can be generated

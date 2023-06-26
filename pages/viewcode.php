@@ -33,6 +33,7 @@ $codedata = ViewSpecific($pdo, $_GET['codeid']);
     echo "<p>{$codedata['uploaddate']}</p>";
     echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
     ?>
+    <a href="../">Home</a>
 </body>
 
 </html>

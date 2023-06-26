@@ -9,7 +9,7 @@ $codedata = ViewSpecific($pdo, $_GET['codeid']);
 if (isset($_POST["title"])) {
     if (!empty($_POST["code"]) && !empty($_POST["title"]) && !empty($_POST['language']))
         EditCode($pdo, $_POST["title"], $_POST["code"], $_GET['codeid'], $uploaddate, strtolower($_POST['language']));
-    header("location: ../");
+    header("location: viewcode.php?codeid={$_GET['codeid']}");
     exit();
 }
 
@@ -29,7 +29,17 @@ if (isset($_POST["title"])) {
     <?php require_once("../components/navbar.php"); ?>
     <form method="post">
         <input value="<?php echo $codedata['title'] ?>" placeholder="Title" type="text" name="title">
-        <input placeholder="Programming language" value="<?php echo $codedata['language'] ?>" type="text" name="language">
+        <select selected="selected" name="language">
+            <?php
+            foreach ($programminglanguages as $language => $alias) {
+                if ($codedata['language'] == $alias) {
+                    echo "<option selected value='{$alias}'>{$language}</option>";
+                } else {
+                    echo "<option value='{$alias}'>{$language}</option>";
+                }
+            }
+            ?>
+        </select>
         <textarea placeholder="Your code" name="code" id="" cols="30" rows="10"><?php echo $codedata['code'] ?></textarea>
         <button type="submit">Upload code</button>
     </form>

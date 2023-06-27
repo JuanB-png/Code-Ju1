@@ -7,7 +7,8 @@ if (isset($_POST['search'])) {
 }
 
 ?>
-
-<form method="post">
-    <input placeholder="Search" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text">
-</form>
+<div class="i">
+    <form method="post" class="i">
+        <input placeholder="Search" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text">
+    </form>
+</div>

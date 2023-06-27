@@ -72,16 +72,17 @@ function GetData($pdo) // The variable must contain the connection of mysql via 
     return $codeindatabase; // This is the output for all the data
 }
 
-function AddCode($pdo, $title, $code, $uploaddate, $language)
+function AddCode($pdo, $title, $code, $uploaddate, $language, $description)
 {
-    $query = "INSERT INTO code (title, code, uploaddate, codeid, language) VALUES (:title, :code, :uploaddate, :codeid, :language)"; // Insert query to put in all data
+    $query = "INSERT INTO code (title, code, uploaddate, codeid, language, description) VALUES (:title, :code, :uploaddate, :codeid, :language, :description)"; // Insert query to put in all data
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // Exectuting the query and putting in all the data
         'title' => $title,
         'code' => $code,
         'uploaddate' => $uploaddate,
         'codeid' => RandomCharacters(128),
-        'language' => $language
+        'language' => $language,
+        'description' => $description
     ]);
 }
 
@@ -96,16 +97,17 @@ function ViewSpecific($pdo, $codeid) {
     return $codeindatabase; // This is the output for all the data
 }
 
-function EditCode($pdo, $title, $code, $codeid, $uploaddate, $language)
+function EditCode($pdo, $title, $code, $codeid, $uploaddate, $language, $description)
 {
-    $query = "UPDATE code SET title = :title, code = :code, uploaddate = :uploaddate, language = :language WHERE codeid = :codeid"; // Update query to change data about info
+    $query = "UPDATE code SET title = :title, code = :code, uploaddate = :uploaddate, language = :language, description = :description WHERE codeid = :codeid"; // Update query to change data about info
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // Exectuting the query and putting in all the data
         'title' => $title,
         'code' => $code,
         'codeid' => $codeid,
         'uploaddate' => $uploaddate,
-        'language' => $language
+        'language' => $language,
+        'description' => $description
     ]);
 }
 ?>

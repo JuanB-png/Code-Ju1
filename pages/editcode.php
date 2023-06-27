@@ -7,8 +7,8 @@ require_once("../components/functions.php");
 $codedata = ViewSpecific($pdo, $_GET['codeid']);
 
 if (isset($_POST["title"])) {
-    if (!empty($_POST["code"]) && !empty($_POST["title"]) && !empty($_POST['language']))
-        EditCode($pdo, $_POST["title"], $_POST["code"], $_GET['codeid'], $uploaddate, strtolower($_POST['language']));
+    if (!empty($_POST["code"]) && !empty($_POST["title"]) && !empty($_POST['language']) && !empty($_POST['description']))
+        EditCode($pdo, $_POST["title"], $_POST["code"], $_GET['codeid'], $uploaddate, $_POST['language'], $_POST['description']);
     header("location: viewcode.php?codeid={$_GET['codeid']}");
     exit();
 }
@@ -41,6 +41,7 @@ if (isset($_POST["title"])) {
             ?>
         </select>
         <textarea placeholder="Your code" name="code" id="" cols="30" rows="10"><?php echo $codedata['code'] ?></textarea>
+        <input placeholder="Short description" name="description" type="text">
         <button type="submit">Upload code</button>
     </form>
 </body>

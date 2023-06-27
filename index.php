@@ -29,6 +29,7 @@ require_once("components/functions.php");
                     echo "<p>Title: {$code['title']}</p>";
                     echo "<p>Language: {$code['language']}</p>";
                     echo "<p>Upload date: {$code['uploaddate']}</p>";
+                    echo "<p>Description: {$code['description']}</p>";
                     echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
                 }
             } else {
@@ -36,6 +37,7 @@ require_once("components/functions.php");
                     echo "<p>Title: {$code['title']}</p>";
                     echo "<p>Language: {$code['language']}</p>";
                     echo "<p>Upload date: {$code['uploaddate']}</p>";
+                    echo "<p>Description: {$code['description']}</p>";
                     echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
                 }
             }

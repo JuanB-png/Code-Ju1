@@ -4,8 +4,8 @@ require_once("../database/dbconnect.php");
 require_once("../components/functions.php");
 
 if (isset($_POST["title"])) {
-    if (!empty($_POST["code"]) && !empty($_POST["title"]) && !empty($_POST['language']))
-        AddCode($pdo, $_POST["title"], $_POST["code"], $uploaddate, strtolower($_POST['language']));
+    if (!empty($_POST["code"]) && !empty($_POST["title"]) && !empty($_POST['language']) && !empty($_POST['description']))
+        AddCode($pdo, $_POST["title"], $_POST["code"], $uploaddate, $_POST['language'], $_POST['description']);
     header("location: ../");
     exit();
 }
@@ -33,6 +33,7 @@ if (isset($_POST["title"])) {
             ?>
         </select>
         <textarea placeholder="Your code" name="code" id="" cols="30" rows="10"></textarea>
+        <input placeholder="Short description" name="description" type="text">
         <button type="submit">Upload code</button>
     </form>
     <a href="../">Home</a>

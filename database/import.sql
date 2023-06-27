@@ -8,5 +8,6 @@ CREATE TABLE code (
     code TEXT NOT NULL,
     uploaddate DATE,
     codeid varchar(255),
-    language varchar(255)
+    language varchar(255),
+    description varchar(100)
 );

@@ -7,9 +7,9 @@ if (isset($_POST['search'])) {
 }
 
 ?>
-<div style="background-color: #393646;width: 94%;margin: auto;">
+<div style="background-color: #393646; width: 94%;margin: auto;">
     <div>
-        <nav class="d-flex justify-content-between align-items-center">
+        <nav class="d-flex justify-content-between align-items-center flex-row">
             <h1 style="color: white;">codeju1</h1>
             <form method="post" style="background-color: #393646;">
                 <input placeholder="Search" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text">
@@ -26,8 +26,12 @@ if (isset($_POST['search'])) {
                 </select>
                 <select style="background-color: #393646; color: aliceblue; border: none;">
                     <option value="" disabled="disabled" selected="selected">Date</option>
-                    <option value="1">2023</option>
-                    <option value="2">2022</option>
+                    <?php 
+                    
+                    for ($i=2023; $i > -1; $i--) { 
+                        echo "<option value=". $i . ">". $i ."</option>";
+                    }
+                    ?>
                 </select>
             </div>
         <?php } else {

@@ -4,8 +4,8 @@ require_once("../database/dbconnect.php");
 require_once("../components/functions.php");
 
 if (isset($_POST["title"])) {
-    if (!empty($_POST["code"]) && !empty($_POST["title"]) && !empty($_POST['language']) && !empty($_POST['description']))
-        AddCode($pdo, $_POST["title"], $_POST["code"], $uploaddate, $_POST['language'], $_POST['description']);
+    if (!empty($_POST["code"]) && !empty($_POST["title"]) && !empty($_POST['language']) && !empty($_POST['description']) && !empty($_POST['creator']))
+        AddCode($pdo, $_POST["title"], $_POST['creator'], $_POST["code"], $uploaddate, $_POST['language'], $_POST['description']);
     header("location: ../");
     exit();
 }
@@ -25,6 +25,7 @@ if (isset($_POST["title"])) {
 <body>
     <form method="post">
         <input placeholder="Title" type="text" name="title">
+        <input placeholder="Your name" type="text" name="creator">
         <select name="language">
             <?php
             foreach ($programminglanguages as $language => $alias) {

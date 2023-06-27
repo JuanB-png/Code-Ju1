@@ -53,7 +53,7 @@ function StorageLeft()
 
 function SearchData($pdo, $search) // The variable must contain the connection of mysql via PDO and user must specify with 0 or 1 if it's trash. (0 is not trash) (1 is trash) and what you're searching for
 {
-    $query = "SELECT * FROM code WHERE title LIKE :search OR code LIKE :search"; // Select all from the table uploads where the user id is from the user and trash is trash given in the function and the thing the user is looking for
+    $query = "SELECT * FROM code WHERE title LIKE :search OR code LIKE :search OR creator LIKE :search"; // Select all from the table uploads where the user id is from the user and trash is trash given in the function and the thing the user is looking for
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // execute the prepared statements
         'search' => "%" . $search . "%" // Added percentages in front of the search and after the search so it can check any position of the string
@@ -72,12 +72,13 @@ function GetData($pdo) // The variable must contain the connection of mysql via 
     return $codeindatabase; // This is the output for all the data
 }
 
-function AddCode($pdo, $title, $code, $uploaddate, $language, $description)
+function AddCode($pdo, $title, $creator, $code, $uploaddate, $language, $description)
 {
-    $query = "INSERT INTO code (title, code, uploaddate, codeid, language, description) VALUES (:title, :code, :uploaddate, :codeid, :language, :description)"; // Insert query to put in all data
+    $query = "INSERT INTO code (title, creator, code, uploaddate, codeid, language, description) VALUES (:title, :creator, :code, :uploaddate, :codeid, :language, :description)"; // Insert query to put in all data
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // Exectuting the query and putting in all the data
         'title' => $title,
+        'creator' => $creator,
         'code' => $code,
         'uploaddate' => $uploaddate,
         'codeid' => RandomCharacters(128),
@@ -97,17 +98,26 @@ function ViewSpecific($pdo, $codeid) {
     return $codeindatabase; // This is the output for all the data
 }
 
-function EditCode($pdo, $title, $code, $codeid, $uploaddate, $language, $description)
+function EditCode($pdo, $title, $creator, $code, $codeid, $uploaddate, $language, $description)
 {
-    $query = "UPDATE code SET title = :title, code = :code, uploaddate = :uploaddate, language = :language, description = :description WHERE codeid = :codeid"; // Update query to change data about info
+    $query = "UPDATE code SET title = :title, creator = :creator, code = :code, uploaddate = :uploaddate, language = :language, description = :description WHERE codeid = :codeid"; // Update query to change data about info
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // Exectuting the query and putting in all the data
         'title' => $title,
+        'creator' => $creator,
         'code' => $code,
         'codeid' => $codeid,
         'uploaddate' => $uploaddate,
         'language' => $language,
         'description' => $description
+    ]);
+}
+
+function DeleteCode($pdo, $codeid){
+    $query = "DELETE FROM code WHERE codeid = :codeid"; // Query to delete from database
+    $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
+    $stmt->execute([ // Execute the deletion of the code
+        'codeid' => $codeid
     ]);
 }
 ?>

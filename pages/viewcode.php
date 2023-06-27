@@ -3,6 +3,13 @@ require_once("../database/dbconnect.php");
 require_once("../components/functions.php");
 
 $codedata = ViewSpecific($pdo, $_GET['codeid']);
+
+if (isset($_POST['deletecode'])) {
+    DeleteCode($pdo, $_GET['codeid']);
+    header("location: ../");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,20 +28,25 @@ $codedata = ViewSpecific($pdo, $_GET['codeid']);
             });
         });
     </script>
+    <script src="../script/script.js" defer></script>
 </head>
 
 <body>
     <?php require_once("../components/navbar.php"); ?>
+    <form method="post">
+        <?php
+        echo "<p>{$codedata['title']}</p>";
+        echo "<p>{$codedata['language']}</p>";
+        echo "<p>{$codedata['creator']}</p>";
+        echo "<pre><code class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
+        echo "<p>{$codedata['uploaddate']}</p>";
+        echo "<p>{$codedata['description']}</p>";
+        echo "<button onclick='WarnUser()' name='delete'>Delete</button>";
+        echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
 
-    <?php
-    echo "<p>{$codedata['title']}</p>";
-    echo "<p>{$codedata['language']}</p>";
-    echo "<pre><code class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
-    echo "<p>{$codedata['uploaddate']}</p>";
-    echo "<p>{$codedata['description']}</p>";
-    echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
-    ?>
-    <a href="../">Home</a>
+        ?>
+        <a href="../">Home</a>
+    </form>
 </body>
 
 </html>

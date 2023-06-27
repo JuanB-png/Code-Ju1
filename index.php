@@ -27,6 +27,7 @@ require_once("components/functions.php");
             if (!isset($_SESSION['search'])) {
                 foreach (GetData($pdo) as $code) {
                     echo "<p>Title: {$code['title']}</p>";
+                    echo "<p>Creator: {$code['creator']}</p>";
                     echo "<p>Language: {$code['language']}</p>";
                     echo "<p>Upload date: {$code['uploaddate']}</p>";
                     echo "<p>Description: {$code['description']}</p>";
@@ -35,6 +36,7 @@ require_once("components/functions.php");
             } else {
                 foreach (SearchData($pdo, $_SESSION['search']) as $code) {
                     echo "<p>Title: {$code['title']}</p>";
+                    echo "<p>Language: {$code['creator']}</p>";
                     echo "<p>Language: {$code['language']}</p>";
                     echo "<p>Upload date: {$code['uploaddate']}</p>";
                     echo "<p>Description: {$code['description']}</p>";

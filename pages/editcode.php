@@ -3,7 +3,7 @@
 $uploaddate = date('Y-m-d');
 require_once("../database/dbconnect.php");
 require_once("../components/functions.php");
-
+$true_or_flase = false;
 $codedata = ViewSpecific($pdo, $_GET['codeid']);
 
 if (isset($_POST["title"])) {

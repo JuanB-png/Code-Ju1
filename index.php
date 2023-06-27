@@ -2,7 +2,7 @@
 
 require_once("database/dbconnect.php");
 require_once("components/functions.php");
-
+$true_or_flase = true;
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ require_once("components/functions.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css"><title>Home</title>
 </head>
 
 <body>

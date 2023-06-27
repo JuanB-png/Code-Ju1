@@ -15,17 +15,37 @@ require_once("components/functions.php");
 </head>
 
 <body>
+    <?php require_once("components/navbar.php"); ?>
+
     <form method="post">
-        <?php
+        <?php echo "Storage left on server: " . StorageLeft(); ?>
+        <p></p>
+        <a href="pages/addcode.php">Add code</a>
+        <div class="cards-layout">
+            <?php
 
-        foreach (GetData($pdo) as $code) {
-            echo $code['title'];
-            echo "<pre>" . htmlspecialchars($code['code']) . "</pre>";
-            echo $code['uploaddate'];
-            echo "<a href='pages/viewcode.php?codeid={$code['codeid']}'>view</a>";
-        }
+            if (!isset($_SESSION['search'])) {
+                foreach (GetData($pdo) as $code) {
+                    echo "<p>Title: {$code['title']}</p>";
+                    echo "<p>Creator: {$code['creator']}</p>";
+                    echo "<p>Language: {$code['language']}</p>";
+                    echo "<p>Upload date: {$code['uploaddate']}</p>";
+                    echo "<p>Description: {$code['description']}</p>";
+                    echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
+                }
+            } else {
+                foreach (SearchData($pdo, $_SESSION['search']) as $code) {
+                    echo "<p>Title: {$code['title']}</p>";
+                    echo "<p>Language: {$code['creator']}</p>";
+                    echo "<p>Language: {$code['language']}</p>";
+                    echo "<p>Upload date: {$code['uploaddate']}</p>";
+                    echo "<p>Description: {$code['description']}</p>";
+                    echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
+                }
+            }
 
-        ?>
+            ?>
+        </div>
     </form>
 </body>
 

@@ -20,22 +20,59 @@ if (isset($_POST["title"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add code</title>
+
+    <style>
+  
+    .inputfield {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .inputfields {
+        background-color: #DBE2EF;
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .codefield {
+        padding: 30px;
+        background-color: #DBE2EF;
+    }
+
+</style>
 </head>
 
 <body>
     <form method="post">
-        <input placeholder="Title" type="text" name="title">
-        <input placeholder="Your name" type="text" name="creator">
-        <select name="language">
-            <?php
-            foreach ($programminglanguages as $language => $alias) {
-                echo "<option value='{$alias}'>{$language}</option>";
-            }
-            ?>
-        </select>
-        <textarea placeholder="Your code" name="code" id="" cols="30" rows="10"></textarea>
-        <input placeholder="Short description" name="description" type="text">
-        <button type="submit">Upload code</button>
+
+        <div class=" d-flex justify-content-center  ">
+            <div class="inputfield">
+                <div class="inputfields">
+                    <input placeholder="Title" type="text" name="title" id="inputfields">
+                </div>
+                <div class="inputfields">
+                    <input placeholder="Your name" type="text" name="creator">
+                </div>
+                <div class="inputfields">
+                    <input placeholder="Short description" name="description" type="text">
+                </div>
+                <div class="inputfields">
+                    <select name="language">
+                        <?php
+                        foreach ($programminglanguages as $language => $alias) {
+                            echo "<option value='{$alias}'>{$language}</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="codefield">
+                <textarea placeholder="code" name="code" id="" cols="200" rows="30"></textarea>
+            </div>
+            <button type="submit">Upload code</button>
+        </div>
     </form>
     <a href="../">Home</a>
 </body>

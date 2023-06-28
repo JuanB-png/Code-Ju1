@@ -120,4 +120,11 @@ function DeleteCode($pdo, $codeid){
         'codeid' => $codeid
     ]);
 }
+
+function NotExists($Check){
+    if(empty($Check)){
+        header("location: ../");
+        exit();
+    }
+}
 ?>

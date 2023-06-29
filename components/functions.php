@@ -10,7 +10,7 @@ $programminglanguages = [
     "CSS" => "css",
     "PHP" => "php",
     "Python" => "py",
-    "Javascript" => "js",
+    "Javascript" => "javascript",
     "Kotlin" => "kt",
     "SQL" => "sql"
 ];
@@ -119,5 +119,12 @@ function DeleteCode($pdo, $codeid){
     $stmt->execute([ // Execute the deletion of the code
         'codeid' => $codeid
     ]);
+}
+
+function NotExists($Check){
+    if(empty($Check)){
+        header("location: ../");
+        exit();
+    }
 }
 ?>

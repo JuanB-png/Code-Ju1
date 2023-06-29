@@ -1,8 +1,10 @@
 <?php
 require_once("../database/dbconnect.php");
 require_once("../components/functions.php");
-
+$true_or_flase = false;
 $codedata = ViewSpecific($pdo, $_GET['codeid']);
+
+NotExists($codedata['codeid']);
 
 if (isset($_POST['deletecode'])) {
     DeleteCode($pdo, $_GET['codeid']);
@@ -29,6 +31,7 @@ if (isset($_POST['deletecode'])) {
         });
     </script>
     <script src="../script/script.js" defer></script>
+
 </head>
 
 <body>
@@ -41,7 +44,7 @@ if (isset($_POST['deletecode'])) {
         echo "<pre><code class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
         echo "<p>{$codedata['uploaddate']}</p>";
         echo "<p>{$codedata['description']}</p>";
-        echo "<button onclick='WarnUser()' name='delete'>Delete</button>";
+        echo "<button id='Warn' onclick='WarnUser()' name='delete'>Delete</button>";
         echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
 
         ?>

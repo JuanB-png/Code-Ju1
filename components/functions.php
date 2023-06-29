@@ -10,7 +10,7 @@ $programminglanguages = [
     "CSS" => "css",
     "PHP" => "php",
     "Python" => "py",
-    "Javascript" => "js",
+    "Javascript" => "javascript",
     "Kotlin" => "kt",
     "SQL" => "sql"
 ];

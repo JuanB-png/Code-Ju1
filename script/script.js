@@ -1,4 +1,5 @@
 const theme = document.getElementById("theme");
+const lighttheme = document.getElementById("lighttheme");
 
 
 function CheckCurrentTheme() {
@@ -8,9 +9,11 @@ function CheckCurrentTheme() {
 
     if (getCookieValue("themevalue") == 0) {
         theme.setAttribute("src", "/images/light-off.png");
+        lighttheme.setAttribute("disabled", "disabled");
     }
     else {
         theme.setAttribute("src", "/images/light-on.png");
+        lighttheme.removeAttribute("disabled");
     }
 }
 CheckCurrentTheme();

@@ -1,0 +1,32 @@
+body {
+    background-color: #DBE2EF;
+}
+
+p {
+    color: black;
+}
+
+.navbody {
+    background-color: #274971;
+}
+
+.ellemant-coller-navbar {
+    background-color: #9CB8D9;
+    color: black;
+}
+
+.cards-body {
+    background-color: #9CB8D9;
+}
+
+.selectbody {
+    background-color: #9CB8D9;
+}
+
+.acoller:hover {
+    color: #0d6efd;
+}
+
+.cards-layout {
+    border-color: #112D4E;
+}

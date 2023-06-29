@@ -7,35 +7,41 @@ if (isset($_POST['search'])) {
 }
 
 ?>
-<div style="background-color: #393646; width: 95%;margin: auto;">
+<div class="navbody">
     <div>
-        <nav class="d-flex justify-content-between align-items-center flex-row" style=" width: 99%;margin: auto;">
+        <nav class="d-flex justify-content-between align-items-center flex-row navwidth">
             <h1 style="color: white;">codeju1</h1>
-            <form method="post" style="background-color: #393646;">
-                <input placeholder="Search" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text" style="background-color: #4F4557;">
+            <form method="post">
+                <input placeholder="Search:" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text" class="ellemant-coller-navbar">
             </form>
             <img id="theme" onclick="ChangeTheme()" src="/images/light-on.png" width="5%">
             <input id="themevalue" hidden value="0" type="text">
         </nav>
         <?php
         if ($true_or_flase) { ?>
-            <div style="width: 100%; margin: auto; background-color: #4F4557;">
-                <div class="d-flex align-items-start flex-row" style="width: 99%; margin: auto;">
-                    <p>filters:</p>
-                    <select style="background-color: #4F4557; color: aliceblue; border: none;">
-                        <option value="" disabled="disabled" selected="selected">language</option>
-                        <option value="1">PHP</option>
-                        <option value="2">HTML</option>
-                    </select>
-                    <select style="background-color: #4F4557; color: aliceblue; border: none;">
-                        <option value="" disabled="disabled" selected="selected">Date</option>
-                        <?php
+            <div class="selectbody">
+                <div class="d-flex flex-row navwidth">
+                    <div class="d-flex flex-row navwidth align-items-start">
+                        <p>filters:</p>
+                        <select class="ellemant-coller-navbar">
+                            <option value="" disabled="disabled" selected="selected">language</option>
+                            <option value="1">PHP</option>
+                            <option value="2">HTML</option>
+                        </select>
+                        <select class="ellemant-coller-navbar">
+                            <option value="" disabled="disabled" selected="selected">Date</option>
+                            <?php
 
-                        for ($i = 2023; $i > -1; $i--) {
-                            echo "<option value=" . $i . ">" . $i . "</option>";
-                        }
-                        ?>
-                    </select>
+                            for ($i = 2023; $i > -1; $i--) {
+                                echo "<option value=" . $i . ">" . $i . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="d-flex align-items-start flex-row-reverse navwidth">
+                        <a href="pages/addcode.php">Add code</a>
+                    </div>
+
                 </div>
             <?php } else {
         } ?>

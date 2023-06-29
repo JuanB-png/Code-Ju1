@@ -17,33 +17,44 @@ $true_or_flase = true;
     <script src="script/script.js" defer></script>
 </head>
 
-<body>
+<body class="d-flex justify-content-between flex-column index_body">
     <?php require_once("components/navbar.php"); ?>
 
     <form method="post">
-        <?php echo "Storage left on server: " . StorageLeft(); ?>
-        <p></p>
-        <a href="pages/addcode.php">Add code</a>
-        <div class="cards-layout">
+        <!-- <?php echo "Storage left on server: " . StorageLeft(); ?> -->
+        <p id="i"></p>
+        <div class="cards-body">
             <?php
 
             if (!isset($_SESSION['search'])) {
                 foreach (GetData($pdo) as $code) {
-                    echo "<p>Title: {$code['title']}</p>";
-                    echo "<p>Creator: {$code['creator']}</p>";
-                    echo "<p>Language: {$code['language']}</p>";
+                    echo "<div class='cards-layout'>";
+                    echo "<div class='d-flex flex-column cardwidth'>";
+                    echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}' class='acoller'>Title: {$code['title']}</a></p>";
                     echo "<p>Upload date: {$code['uploaddate']}</p>";
+                    echo "</div>";
+                    echo "<div class='d-flex justify-content-around'>";
+                    echo "<p>Language: {$code['language']}</p>";
+                    echo "<p>Creator: {$code['creator']}</p>";
                     echo "<p>Description: {$code['description']}</p>";
-                    echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<p></p>";
                 }
             } else {
                 foreach (SearchData($pdo, $_SESSION['search']) as $code) {
-                    echo "<p>Title: {$code['title']}</p>";
-                    echo "<p>Language: {$code['creator']}</p>";
-                    echo "<p>Language: {$code['language']}</p>";
+                    echo "<div class='cards-layout'>";
+                    echo "<div class='d-flex flex-column cardwidth'>";
+                    echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}' class='acoller'>Title: {$code['title']}</a></p>";
                     echo "<p>Upload date: {$code['uploaddate']}</p>";
+                    echo "</div>";
+                    echo "<div class='d-flex justify-content-around'>";
+                    echo "<p>Language: {$code['language']}</p>";
+                    echo "<p>Creator: {$code['creator']}</p>";
                     echo "<p>Description: {$code['description']}</p>";
-                    echo "<p><a href='pages/viewcode.php?codeid={$code['codeid']}'>View code</a></p>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<p></p>";
                 }
             }
 

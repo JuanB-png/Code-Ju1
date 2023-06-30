@@ -41,7 +41,7 @@ if (isset($_POST['deletecode'])) {
         echo "<p>{$codedata['title']}</p>";
         echo "<p>{$codedata['language']}</p>";
         echo "<p>{$codedata['creator']}</p>";
-        echo "<pre><code class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
+        echo "<pre><code style='height:500px; width:98%; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;' class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
         echo "<p>{$codedata['uploaddate']}</p>";
         echo "<p>{$codedata['description']}</p>";
         echo "<button id='Warn' onclick='WarnUser()' name='delete'>Delete</button>";

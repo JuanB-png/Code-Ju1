@@ -19,62 +19,97 @@ if (isset($_POST["title"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
     <title>Add code</title>
-
     <style>
   
+
     .inputfield {
         display: flex;
         justify-content: space-between;
     }
 
-    .inputfields {
-        background-color: #DBE2EF;
-        border: none;
+    #inputfields {
+        background-color: #4F4557;
+        outline: 0;
         display: flex;
         justify-content: space-between;
-        padding: 20px;
+        padding: 10px;
+        color: white; /* Set the text color to white */
+
     }
 
-    .codefield {
-        padding: 30px;
-        background-color: #DBE2EF;
+    #inputfields::placeholder{
+        color: white;
     }
+
+    .codefield  {
+        padding: 30px;
+        background-color: #4F4557;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .codefield textarea {
+width: 80%;
+    }
+
+    #button{
+        background-color: #4F4557;
+        color: white;
+    }
+
+    .submit{
+
+        display: flex;
+        justify-content: center;
+  
+    }
+  
+</style>
+
 
 </style>
 </head>
 
 <body>
+    <?php
+include("../components/navbar.php")
+    ?>
     <form method="post">
 
-        <div class=" d-flex justify-content-center  ">
-            <div class="inputfield">
+        <div class="   ">
+            <div class="p-5 inputfield">
                 <div class="inputfields">
                     <input placeholder="Title" type="text" name="title" id="inputfields">
                 </div>
                 <div class="inputfields">
-                    <input placeholder="Your name" type="text" name="creator">
+                    <input placeholder="Your name" type="text" name="creator" id="inputfields">
                 </div>
                 <div class="inputfields">
-                    <input placeholder="Short description" name="description" type="text">
+                    <input placeholder="Short description" name="description" type="text" id="inputfields">
                 </div>
                 <div class="inputfields">
-                    <select name="language">
+                    <select id="inputfields" name="language">
                         <?php
                         foreach ($programminglanguages as $language => $alias) {
-                            echo "<option value='{$alias}'>{$language}</option>";
+                            echo "<option  value='{$alias}'>{$language}</option>";
                         }
                         ?>
                     </select>
                 </div>
             </div>
             <div class="codefield">
-                <textarea placeholder="code" name="code" id="" cols="200" rows="30"></textarea>
+                <textarea placeholder="code" name="code" id="inputfields" cols="180" rows="30" ></textarea>
             </div>
-            <button type="submit">Upload code</button>
+            <div class="submit">
+            <button id="button" type="submit">Upload code</button >
+            </div>
         </div>
     </form>
-    <a href="../">Home</a>
+  
 </body>
 
 </html>

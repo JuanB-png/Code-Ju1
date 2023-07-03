@@ -10,7 +10,7 @@ if (isset($_POST['search'])) {
 <div class="navbody">
     <div>
         <nav class="d-flex justify-content-between align-items-center flex-row navwidth">
-            <h1 style="color: white;">codeju1</h1>
+            <a href="/" class="homeknop"><h1 style="color: white;">codeju1</h1></a>
             <form method="post">
                 <input placeholder="Search:" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text" class="ellemant-coller-navbar">
             </form>

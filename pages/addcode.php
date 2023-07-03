@@ -21,62 +21,60 @@ if (isset($_POST["title"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../style/style.css">
+
+    <script src="../script/script.js" defer></script>
     <title>Add code</title>
     <style>
-  
+        .inputfield {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .inputfield {
-        display: flex;
-        justify-content: space-between;
-    }
+        #inputfields {
+            background-color: #4F4557;
+            outline: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            color: white;
+            /* Set the text color to white */
 
-    #inputfields {
-        background-color: #4F4557;
-        outline: 0;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        color: white; /* Set the text color to white */
+        }
 
-    }
+        #inputfields::placeholder {
+            color: white;
+        }
 
-    #inputfields::placeholder{
-        color: white;
-    }
+        .codefield {
+            padding: 30px;
+            background-color: #4F4557;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-    .codefield  {
-        padding: 30px;
-        background-color: #4F4557;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
+        .codefield textarea {
+            width: 80%;
+        }
 
-    .codefield textarea {
-width: 80%;
-    }
+        #button {
+            background-color: #4F4557;
+            color: white;
+            width: 30%;
+            padding: 10px;
+        }
 
-    #button{
-        background-color: #4F4557;
-        color: white;
-    }
-
-    .submit{
-
-        display: flex;
-        justify-content: center;
-  
-    }
-  
-</style>
-
-
-</style>
+        .submit {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <link id="lighttheme" rel="stylesheet" href="../style/stylelight.css">
 </head>
 
 <body>
     <?php
-include("../components/navbar.php")
+    include("../components/navbar.php")
     ?>
     <form method="post">
 
@@ -102,14 +100,15 @@ include("../components/navbar.php")
                 </div>
             </div>
             <div class="codefield">
-                <textarea placeholder="code" name="code" id="inputfields" cols="180" rows="30" ></textarea>
+                <textarea placeholder="code" name="code" id="inputfields" cols="180" rows="30"></textarea>
             </div>
+            <p></p>
             <div class="submit">
-            <button id="button" type="submit">Upload code</button >
+                <button id="button" type="submit">Submit</button>
             </div>
         </div>
     </form>
-  
+    <?php require_once("../components/footer.php") ?>
 </body>
 
 </html>

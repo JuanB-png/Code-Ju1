@@ -51,3 +51,7 @@ p {
 .emiel {
     border-color: black !important;
 }
+
+#inputfields::placeholder {
+    color: black;
+}

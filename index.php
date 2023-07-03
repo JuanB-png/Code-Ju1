@@ -70,6 +70,7 @@ $true_or_flase = true;
             ?>
         </div>
     </form>
+    <?php require_once("components/footer.php"); ?>
 </body>
 
 </html>

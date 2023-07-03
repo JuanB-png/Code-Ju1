@@ -1,5 +1,6 @@
 body {
     background-color: #DBE2EF;
+    color: black;
 }
 
 p {
@@ -29,4 +30,24 @@ p {
 
 .cards-layout {
     border-color: #112D4E;
+}
+
+.codefield {
+    background-color: #9CB8D9;
+}
+
+#inputfields {
+    background-color: #9CB8D9;
+}
+
+#button {
+    background-color: #9CB8D9;
+}
+
+.footerkols {
+    color: black !important;
+}
+
+.emiel {
+    border-color: black !important;
 }

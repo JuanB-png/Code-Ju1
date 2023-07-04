@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL); ini_set('display_errors', '1');
 require_once("database/dbconnect.php");
 require_once("components/functions.php");
 $true_or_flase = true;
@@ -28,17 +28,20 @@ $true_or_flase = true;
             <?php
 
             switch (true) {
-                case empty($_SESSION['search']) && !empty($_SESSION['language'] && !empty($_SESSION['filterdate'])):
+                case empty($_SESSION['search']) && !empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
                     ShowData(SearchData($pdo, '', $_SESSION['language'], $_SESSION['filterdate']));
                     break;
-                case empty($_SESSION['search']) && empty($_SESSION['language'] && !empty($_SESSION['filterdate'])):
+                case empty($_SESSION['search']) && empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
                     ShowData(SearchData($pdo, '', '', $_SESSION['filterdate']));
                     break;
-                case empty($_SESSION['search']) && !empty($_SESSION['language'] && empty($_SESSION['filterdate'])):
+                case empty($_SESSION['search']) && !empty($_SESSION['language']) && empty($_SESSION['filterdate']):
                     ShowData(SearchData($pdo, '', $_SESSION['language'], ''));
                     break;
-                default:
+                case !empty($_SESSION['search']) && !empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
                     ShowData(SearchData($pdo, $_SESSION['search'], $_SESSION['language'], $_SESSION['filterdate']));
+                    break;
+                default:
+                    ShowData(GetData($pdo));
                     break;
             }
 

@@ -14,6 +14,12 @@ if (isset($_POST['search'])) {
     }
 }
 
+if (isset($_POST['languagefilter']) || isset($_POST["filterdate"])) {
+    $_SESSION['language'] = $_POST['languagefilter'];
+    $_SESSION['filterdate'] = $_POST["filterdate"];
+    header("location: ./");
+    exit();
+}
 
 ?>
 <div class="navbody">
@@ -56,14 +62,6 @@ if (isset($_POST['search'])) {
                                 ?>
                             </select>
                             <input onchange="submit()" <?php if (!empty($_SESSION['filterdate'])) echo "value='" . $_SESSION['filterdate'] . "'"; ?> class="ellemant-coller-navbar" type="date" name="filterdate">
-                            <?php
-                            if (isset($_POST['languagefilter']) || isset($_POST["filterdate"])) {
-                                $_SESSION['language'] = $_POST['languagefilter'];
-                                $_SESSION['filterdate'] = $_POST["filterdate"];
-                                header("location: ./");
-                                exit();
-                            }
-                            ?>
 
                         </form>
                     </div>

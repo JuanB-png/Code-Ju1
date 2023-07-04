@@ -1,18 +1,36 @@
 <?php
 
+$fullurl = explode("/", $_SERVER["REQUEST_URI"]);
+$url = array_slice($fullurl, -2);
+
 if (isset($_POST['search'])) {
     $_SESSION['search'] = $_POST['search'];
-    header('location: /');
-    exit();
+    if ($url[0] == "pages") {
+        header('Location: ../');
+        exit();
+    } else {
+        header('Location: ./');
+        exit();
+    }
 }
+
 
 ?>
 <div class="navbody">
     <div>
         <nav class="d-flex justify-content-between align-items-center flex-row navwidth">
-            <a href="/" class="homeknop">
+            <?php
+            if ($url[0] == "pages") {
+                echo '
+            <a href="../" class="homeknop">
                 <h1 style="color: white;">codeju1</h1>
-            </a>
+            </a>';
+            } else {
+                echo '<a href="./" class="homeknop">
+                <h1 style="color: white;">codeju1</h1>
+            </a>';
+            }
+            ?>
             <form method="post">
                 <input placeholder="Search:" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text" class="ellemant-coller-navbar">
             </form>

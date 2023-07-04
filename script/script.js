@@ -4,18 +4,50 @@ const lighttheme = document.getElementById("lighttheme");
 
 function CheckCurrentTheme() {
     if (getCookieValue("themevalue") == null) {
-        setCookie("themevalue", 0);
+        setCookie("themevalue", 1);
+    }
+
+    var basePath = location.pathname;
+    var imagesPath;
+
+    switch (basePath) {
+        case '/Code-Ju1/':
+        case '/Code-Ju1':
+            imagesPath = "/Code-Ju1/images/";
+            break;
+        case '/':
+        case '':
+            imagesPath = "/images/";
+            break;
+        default:
+            if (basePath.startsWith('/Code-Ju1/pages/') || basePath === '/pages' || basePath === '/pages/') {
+                imagesPath = "../images/";
+            } else if (basePath.startsWith('/pages/')) {
+                imagesPath = "/images/";
+            } else {
+                imagesPath = basePath + "/images/";
+            }
+            break;
     }
 
     if (getCookieValue("themevalue") == 0) {
-        theme.setAttribute("src", "/images/light-off.png");
+        theme.setAttribute("src", imagesPath + "light-off.png");
         lighttheme.setAttribute("disabled", "disabled");
-    }
-    else {
-        theme.setAttribute("src", "/images/light-on.png");
+    } else {
+        theme.setAttribute("src", imagesPath + "light-on.png");
         lighttheme.removeAttribute("disabled");
     }
 }
+
+
+function getRelativePath(path) {
+    var segments = path.split('/');
+    segments.pop();
+    return segments.join('/') + '/';
+}
+
+
+
 CheckCurrentTheme();
 
 function WarnUser() {

@@ -29,11 +29,11 @@ $true_or_flase = true;
             <?php
 
             switch (true) {
-                case empty($_SESSION['search']) && empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
-                    ShowData(SearchData($pdo, '', '', $_SESSION['filterdate']));
-                    break;
                 case empty($_SESSION['search']) && !empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
                     ShowData(SearchData($pdo, '', $_SESSION['language'], $_SESSION['filterdate']));
+                    break;
+                case empty($_SESSION['search']) && empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
+                    ShowData(SearchData($pdo, '', '', $_SESSION['filterdate']));
                     break;
                 case empty($_SESSION['search']) && !empty($_SESSION['language']) && empty($_SESSION['filterdate']):
                     ShowData(SearchData($pdo, '', $_SESSION['language'], ''));

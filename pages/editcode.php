@@ -55,7 +55,7 @@ if (isset($_POST["title"])) {
         </div>
         <div class="edit_footer">
             <p><?php echo $codedata['uploaddate']; ?></p>
-            <button type="submit" id="save_button">save</button>
+            <button type="submit" id="save_button">Submit</button>
             <p></p>
         </div>
     </form>

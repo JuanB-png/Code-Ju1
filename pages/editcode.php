@@ -59,6 +59,7 @@ if (isset($_POST["title"])) {
             <p></p>
         </div>
     </form>
+    <?php require_once("../components/footer.php"); ?>
 </body>
 
 </html>

@@ -1,0 +1,15 @@
+Met het project 2 scrum met Abel, Emiel en Sven ging heel veel goed. 
+
+Wat ging er goed? :
+
+1. We schrijven goede Userstories.
+2. We hebben goede acceptatie criteria.
+3. We hebben een goede code structuur.
+4. We hebben goed gebruik gemaakt van functies
+5. We voorbereiden onze sprint reviews goed.
+
+Wat zijn de verbeter punten? :
+
+1. Meer aantekeningen voor de reviews schrijven
+2. Beter eigen sprints periode plannen, dus de taken beter vedelen.
+3. Elke dag een standup doen. Dit moeten we echt te volgende keer doen.

@@ -59,7 +59,7 @@ p {
 }
 /* edit css */
 .inputfieldsedit {
-    background-color: #2352c1;
+    background-color: #9CB8D9;
     outline: 0;
     padding: 10px;
     color: white;
@@ -68,4 +68,9 @@ p {
 }
 .inputfieldsedit::placeholder {
     color: white;
+}
+#save_button {
+    background-color: #9CB8D9;
+    width: 15%;
+    margin: auto;
 }

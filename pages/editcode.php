@@ -29,53 +29,6 @@ if (isset($_POST["title"])) {
     <link id="lighttheme" rel="stylesheet" href="../style/stylelight.css">
     <title>edit: <?php echo $codedata['title']; ?></title>
     <script src="../script/script.js" defer></script>
-    <style>
-        .inputfieldsedit {
-            background-color: #4F4557;
-            outline: 0;
-            padding: 10px;
-            color: white;
-            width: 200px;
-        }
-
-        .inputfieldsedit::placeholder {
-            color: white;
-        }
-
-        .basic_info {
-            display: flex;
-            justify-content: space-around;
-            padding: 30px;
-        }
-
-        .edit_form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .codefield {
-            padding: 30px;
-            background-color: #4F4557;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .codefield textarea {
-            width: 80%;
-        }
-
-        #save_button {
-            background-color: #4F4557;
-            width: 15%;
-            margin: auto;
-        }
-
-        .edit_footer {
-            display: flex;
-            padding: 3px;
-        }
-    </style>
 </head>
 
 <body class="d-flex justify-content-between flex-column index_body">

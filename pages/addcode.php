@@ -24,62 +24,11 @@ if (isset($_POST["title"])) {
 
     <script src="../script/script.js" defer></script>
     <title>Add code</title>
-    <style>
-        .inputfield {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        #inputfields {
-            background-color: #4F4557;
-            outline: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            color: white;
-            margin-left: 40px;
-            margin-right: 40px;
-            /* Set the text color to white */
-
-        }
-
-        .inputfield #inputfields {
-            width: 200px;
-        }
-
-        #inputfields::placeholder {
-            color: white;
-        }
-
-        .codefield {
-            padding: 30px;
-            background-color: #4F4557;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .codefield textarea {
-            width: 80%;
-        }
-
-        #button {
-            background-color: #4F4557;
-            color: white;
-            width: 30%;
-            padding: 10px;
-        }
-
-        .submit {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link id="lighttheme" rel="stylesheet" href="../style/stylelight.css">
 </head>
 
-<body>
+<body class="d-flex justify-content-between flex-column index_body">
     <?php
     include("../components/navbar.php")
     ?>
@@ -106,7 +55,7 @@ if (isset($_POST["title"])) {
                     </select>
                 </div>
             </div>
-            <div class="codefield">
+            <div class="inputcodefield">
                 <textarea placeholder="code" name="code" id="inputfields" cols="180" rows="30"></textarea>
             </div>
             <p></p>

@@ -27,7 +27,8 @@ if (isset($_POST["title"])) {
     <style>
         .inputfield {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         #inputfields {
@@ -37,8 +38,14 @@ if (isset($_POST["title"])) {
             justify-content: space-between;
             padding: 10px;
             color: white;
+            margin-left: 40px;
+            margin-right: 40px;
             /* Set the text color to white */
 
+        }
+
+        .inputfield #inputfields {
+            width: 200px;
         }
 
         #inputfields::placeholder {

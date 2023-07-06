@@ -4,7 +4,7 @@ const lighttheme = document.getElementById("lighttheme");
 
 function CheckCurrentTheme() {
     if (getCookieValue("themevalue") == null) {
-        setCookie("themevalue", 0);
+        setCookie("themevalue", 1);
     }
 
     var basePath = location.pathname;

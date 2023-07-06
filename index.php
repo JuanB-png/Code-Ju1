@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL); ini_set('display_errors', '1');
 require_once("database/dbconnect.php");
 require_once("components/functions.php");
 $true_or_flase = true;
@@ -27,44 +27,22 @@ $true_or_flase = true;
         <div class="cards-body">
             <?php
 
-            if (!isset($_SESSION['search'])) {
-                foreach (GetData($pdo) as $code) {
-                    echo "<div class='cards-layout'>";
-                    echo "<p></p>";
-                    echo "<div class='d-flex flex-column cardwidth'>";
-                    echo "<div class='d-flex flex-row justify-content-between'>";
-                    echo "<h3><a href='pages/viewcode.php?codeid={$code['codeid']}' class='acoller'>Title: {$code['title']}</a></h3>";
-                    echo "<p>Upload date: {$code['uploaddate']}</p>";
-                    echo "</div>";
-                    echo "<p></p>";
-                    echo "<div class='d-flex justify-content-around'>";
-                    echo "<p>Language: {$code['language']}</p>";
-                    echo "<p>Creator: {$code['creator']}</p>";
-                    echo "<p>Description: {$code['description']}</p>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "<p></p>";
-                }
-            } else {
-                foreach (SearchData($pdo, $_SESSION['search']) as $code) {
-                    echo "<div class='cards-layout'>";
-                    echo "<p></p>";
-                    echo "<div class='d-flex flex-column cardwidth'>";
-                    echo "<div class='d-flex flex-row justify-content-between'>";
-                    echo "<h3><a href='pages/viewcode.php?codeid={$code['codeid']}' class='acoller'>Title: {$code['title']}</a></h3>";
-                    echo "<p>Upload date: {$code['uploaddate']}</p>";
-                    echo "</div>";
-                    echo "<p></p>";
-                    echo "<div class='d-flex justify-content-around'>";
-                    echo "<p>Language: {$code['language']}</p>";
-                    echo "<p>Creator: {$code['creator']}</p>";
-                    echo "<p>Description: {$code['description']}</p>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "<p></p>";
-                }
+            switch (true) {
+                case empty($_SESSION['search']) && !empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
+                    ShowData(SearchData($pdo, '', $_SESSION['language'], $_SESSION['filterdate']));
+                    break;
+                case empty($_SESSION['search']) && empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
+                    ShowData(SearchData($pdo, '', '', $_SESSION['filterdate']));
+                    break;
+                case empty($_SESSION['search']) && !empty($_SESSION['language']) && empty($_SESSION['filterdate']):
+                    ShowData(SearchData($pdo, '', $_SESSION['language'], ''));
+                    break;
+                case !empty($_SESSION['search']) && !empty($_SESSION['language']) && !empty($_SESSION['filterdate']):
+                    ShowData(SearchData($pdo, $_SESSION['search'], $_SESSION['language'], $_SESSION['filterdate']));
+                    break;
+                default:
+                    ShowData(GetData($pdo));
+                    break;
             }
 
             ?>

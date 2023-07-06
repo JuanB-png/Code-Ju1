@@ -1,6 +1,7 @@
 <?php
 
 $programminglanguages = [
+    "Language" => "",
     "PHP" => "php",
     "Rust" => "rs",
     "C++" => "cpp",
@@ -51,12 +52,14 @@ function StorageLeft()
     return $currentdiskfree . ' free'; // This is the amount rounded
 }
 
-function SearchData($pdo, $search) // The variable must contain the connection of mysql via PDO and user must specify with 0 or 1 if it's trash. (0 is not trash) (1 is trash) and what you're searching for
+function SearchData($pdo, $search, $language, $uploaddate) // The variable must contain the connection of mysql via PDO and user must specify with 0 or 1 if it's trash. (0 is not trash) (1 is trash) and what you're searching for
 {
-    $query = "SELECT * FROM code WHERE title LIKE :search OR code LIKE :search OR creator LIKE :search"; // Select all from the table uploads where the user id is from the user and trash is trash given in the function and the thing the user is looking for
+    $query = "SELECT * FROM code WHERE (title LIKE :search OR creator LIKE :search) AND language LIKE :language AND uploaddate LIKE :uploaddate"; // Select all from the table uploads where the user id is from the user and trash is trash given in the function and the thing the user is looking for
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // execute the prepared statements
-        'search' => "%" . $search . "%" // Added percentages in front of the search and after the search so it can check any position of the string
+        'search' => "%" . $search . "%", // Added percentages in front of the search and after the search so it can check any position of the string
+        'language' => "%" . $language . "%",
+        'uploaddate' => "%" . $uploaddate . "%"
     ]);
     $codeindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC); // Put all the results that match in this variable
     return $codeindatabase; // This is the final result
@@ -87,7 +90,8 @@ function AddCode($pdo, $title, $creator, $code, $uploaddate, $language, $descrip
     ]);
 }
 
-function ViewSpecific($pdo, $codeid) {
+function ViewSpecific($pdo, $codeid)
+{
     $query = "SELECT * FROM code WHERE codeid = :codeid"; // Get everything from the table code where the code id is that
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([
@@ -113,7 +117,8 @@ function EditCode($pdo, $title, $creator, $code, $codeid, $uploaddate, $language
     ]);
 }
 
-function DeleteCode($pdo, $codeid){
+function DeleteCode($pdo, $codeid)
+{
     $query = "DELETE FROM code WHERE codeid = :codeid"; // Query to delete from database
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // Execute the deletion of the code
@@ -121,10 +126,33 @@ function DeleteCode($pdo, $codeid){
     ]);
 }
 
-function NotExists($Check){
-    if(empty($Check)){
+function NotExists($Check)
+{
+    if (empty($Check)) {
         header("location: ../");
         exit();
+    }
+}
+
+function ShowData($pdoresults)
+{
+    foreach ($pdoresults as $code) {
+        echo "<div class='cards-layout'>";
+        echo "<p></p>";
+        echo "<div class='d-flex flex-column cardwidth'>";
+        echo "<div class='d-flex flex-row justify-content-between'>";
+        echo "<h3><a href='pages/viewcode.php?codeid={$code['codeid']}' class='acoller'>Title: {$code['title']}</a></h3>";
+        echo "<p>Upload date: {$code['uploaddate']}</p>";
+        echo "</div>";
+        echo "<p></p>";
+        echo "<div class='d-flex justify-content-around'>";
+        echo "<p>Language: {$code['language']}</p>";
+        echo "<p>Creator: {$code['creator']}</p>";
+        echo "<p>Description: {$code['description']}</p>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "<p></p>";
     }
 }
 ?>

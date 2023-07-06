@@ -1,8 +1,23 @@
 <?php
 
+$fullurl = explode("/", $_SERVER["REQUEST_URI"]);
+$url = array_slice($fullurl, -2);
+
 if (isset($_POST['search'])) {
     $_SESSION['search'] = $_POST['search'];
-    header('location: /');
+    if ($url[0] == "pages") {
+        header('Location: ../');
+        exit();
+    } else {
+        header('Location: ./');
+        exit();
+    }
+}
+
+if (isset($_POST['languagefilter']) || isset($_POST["filterdate"])) {
+    $_SESSION['language'] = $_POST['languagefilter'];
+    $_SESSION['filterdate'] = $_POST["filterdate"];
+    header("location: ./");
     exit();
 }
 
@@ -10,7 +25,18 @@ if (isset($_POST['search'])) {
 <div class="navbody">
     <div>
         <nav class="d-flex justify-content-between align-items-center flex-row navwidth">
-            <a href="/" class="homeknop"><h1 style="color: white;">codeju1</h1></a>
+            <?php
+            if ($url[0] == "pages") {
+                echo '
+            <a href="../" class="homeknop">
+                <h1 style="color: white;">codeju1</h1>
+            </a>';
+            } else {
+                echo '<a href="./" class="homeknop">
+                <h1 style="color: white;">codeju1</h1>
+            </a>';
+            }
+            ?>
             <form method="post">
                 <input placeholder="Search:" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text" class="ellemant-coller-navbar">
             </form>
@@ -23,20 +49,21 @@ if (isset($_POST['search'])) {
                 <div class="d-flex flex-row navwidth">
                     <div class="d-flex flex-row navwidth align-items-start">
                         <p>filters:</p>
-                        <select class="ellemant-coller-navbar">
-                            <option value="" disabled="disabled" selected="selected">language</option>
-                            <option value="1">PHP</option>
-                            <option value="2">HTML</option>
-                        </select>
-                        <select class="ellemant-coller-navbar">
-                            <option value="" disabled="disabled" selected="selected">Date</option>
-                            <?php
+                        <form method="post">
+                            <select selected="selected" name="languagefilter" onchange="submit()" class="ellemant-coller-navbar">
+                                <?php
+                                foreach ($programminglanguages as $language => $alias) {
+                                    if ($_SESSION['language'] == $alias) {
+                                        echo "<option selected value='{$alias}'>{$language}</option>";
+                                    } else {
+                                        echo "<option value='{$alias}'>{$language}</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <input onchange="submit()" <?php if (!empty($_SESSION['filterdate'])) echo "value='" . $_SESSION['filterdate'] . "'"; ?> class="ellemant-coller-navbar" type="date" name="filterdate">
 
-                            for ($i = 2023; $i > -1; $i--) {
-                                echo "<option value=" . $i . ">" . $i . "</option>";
-                            }
-                            ?>
-                        </select>
+                        </form>
                     </div>
                     <div class="d-flex align-items-start flex-row-reverse navwidth">
                         <a href="pages/addcode.php">Add code</a>

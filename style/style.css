@@ -6,6 +6,10 @@ p {
     color: aliceblue;
 }
 
+h2{
+    color: aliceblue;
+}
+
 /* navbar css */
 .navbody {
     background-color: #393646;
@@ -35,7 +39,7 @@ p {
     background-color: #4F4557;
 }
 .index_body {
-    width: 95%;
+    width: 90%;
     margin: auto;
 }
 .cards-layout {
@@ -54,4 +58,62 @@ p {
 .acoller:hover {
     color: #0d6efd;
     text-decoration: underline;
+}
+
+.inputfieldsedit {
+    background-color: #4F4557;
+    outline: 0;
+    padding: 10px;
+    color: white;
+    width: 200px;
+}
+
+.inputfieldsedit::placeholder {
+    color: white;
+}
+
+.basic_info {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.edit_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.codefield {
+    padding: 30px;
+    background-color: #4F4557;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.codefield textarea {
+    width: 80%;
+}
+
+#save_button {
+    background-color: #4F4557;
+    width: 15%;
+    margin: auto;
+    color: white;
+}
+
+.edit_footer {
+    display: flex;
+    padding: 3px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#Warn{
+    background-color: #c83434;
+    color: aliceblue;
 }

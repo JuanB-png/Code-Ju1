@@ -7,6 +7,10 @@ p {
     color: black;
 }
 
+h2 {
+    color: black;
+}
+
 .navbody {
     background-color: #274971;
 }
@@ -26,6 +30,10 @@ p {
 
 .acoller:hover {
     color: #0d6efd;
+}
+
+.inputcodefield{
+    background-color: #DBE2EF; 
 }
 
 .cards-layout {
@@ -73,4 +81,5 @@ p {
     background-color: #9CB8D9;
     width: 15%;
     margin: auto;
+    color: black;
 }

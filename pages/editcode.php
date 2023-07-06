@@ -51,14 +51,15 @@ if (isset($_POST["title"])) {
             </select>
         </div>
         <div class="codefield">
-            <textarea placeholder="Your code" name="code" id="" cols="30" rows="10" class="inputfieldsedit"><?php echo $codedata['code'] ?></textarea>
+            <textarea placeholder="Your code" name="code" id="" cols="30" rows="20" class="inputfieldsedit"><?php echo $codedata['code'] ?></textarea>
         </div>
         <div class="edit_footer">
             <p><?php echo $codedata['uploaddate']; ?></p>
-            <button type="submit" id="save_button">save</button>
+            <button type="submit" id="save_button">Submit</button>
             <p></p>
         </div>
     </form>
+    <?php require_once("../components/footer.php"); ?>
 </body>
 
 </html>

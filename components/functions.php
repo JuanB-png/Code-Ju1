@@ -58,7 +58,7 @@ function SearchData($pdo, $search, $language, $uploaddate) // The variable must 
     $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
     $stmt->execute([ // execute the prepared statements
         'search' => "%" . $search . "%", // Added percentages in front of the search and after the search so it can check any position of the string
-        'language' => "%" . $language . "%",
+        'language' => $language,
         'uploaddate' => "%" . $uploaddate . "%"
     ]);
     $codeindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC); // Put all the results that match in this variable

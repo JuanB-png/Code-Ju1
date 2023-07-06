@@ -38,7 +38,7 @@ if (isset($_POST['languagefilter']) || isset($_POST["filterdate"])) {
             }
             ?>
             <form method="post">
-                <input placeholder="Search:" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text" class="ellemant-coller-navbar">
+                <input placeholder="Search:" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" name="search" type="text" class="ellemant-coller-navbar" style="width: 300%;">
             </form>
             <img id="theme" onclick="ChangeTheme()" src="/images/light-on.png" width="5%">
             <input id="themevalue" hidden value="0" type="text">

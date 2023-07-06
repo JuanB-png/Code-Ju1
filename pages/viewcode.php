@@ -21,7 +21,9 @@ if (isset($_POST['deletecode'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viewing: <?php echo $codedata['title']; ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -31,25 +33,28 @@ if (isset($_POST['deletecode'])) {
         });
     </script>
     <script src="../script/script.js" defer></script>
-
+    <link id="lighttheme" rel="stylesheet" href="../style/stylelight.css">
 </head>
 
-<body>
-    <?php require_once("../components/navbar.php"); ?>
-    <form method="post">
+<body class="d-flex justify-content-between flex-column index_body">
         <?php
-        echo "<p>{$codedata['title']}</p>";
-        echo "<p>{$codedata['language']}</p>";
-        echo "<p>{$codedata['creator']}</p>";
-        echo "<pre><code style='height:500px; width:98%; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;' class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
-        echo "<p>{$codedata['uploaddate']}</p>";
-        echo "<p>{$codedata['description']}</p>";
-        echo "<button id='Warn' onclick='WarnUser()' name='delete'>Delete</button>";
-        echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
-
+        include("../components/navbar.php")
         ?>
-        <a href="../">Home</a>
-    </form>
+        <form method="post">
+            <?php
+            echo "<h2>{$codedata['title']}</h2>";
+            echo "<p>{$codedata['language']}</p>";
+            echo "<p>{$codedata['creator']}</p>";
+            echo "<pre><code style='height:600px; width:100%; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;' class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
+            echo "<p>{$codedata['uploaddate']}</p>";
+            echo "<p>{$codedata['description']}</p>";
+            echo "<button id='Warn' onclick='WarnUser()' name='delete'>Delete</button>";
+            echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
+
+            ?>
+            <a href="../">Home</a>
+        </form>
+        <?php require_once("../components/footer.php"); ?>
 </body>
 
 </html>

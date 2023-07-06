@@ -106,3 +106,14 @@ h2{
     display: flex;
     padding: 3px;
 }
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#Warn{
+    background-color: #c83434;
+    color: aliceblue;
+}

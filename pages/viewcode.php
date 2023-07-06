@@ -43,16 +43,14 @@ if (isset($_POST['deletecode'])) {
         <form method="post">
             <?php
             echo "<h2>{$codedata['title']}</h2>";
-            echo "<p>{$codedata['language']}</p>";
-            echo "<p>{$codedata['creator']}</p>";
+            echo "<p>Language: {$codedata['language']}</p>";
+            echo "<p>Creator: {$codedata['creator']}</p>";
+            echo "<p>Description: {$codedata['description']}</p>";
             echo "<pre><code style='height:600px; width:100%; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;' class='{$codedata['language']}'>" . htmlspecialchars($codedata['code']) . "</code></pre>";
-            echo "<p>{$codedata['uploaddate']}</p>";
-            echo "<p>{$codedata['description']}</p>";
-            echo "<button id='Warn' onclick='WarnUser()' name='delete'>Delete</button>";
-            echo "<a href='editcode.php?codeid={$codedata['codeid']}'>Edit</a>";
+            echo "<div class='options'> <p>{$codedata['uploaddate']}</p> <button id='Warn' onclick='WarnUser()' name='delete'>Delete</button> </div>";
+            echo "<h5><a class='acoller' href='editcode.php?codeid={$codedata['codeid']}'>Edit</a><h5>";
 
             ?>
-            <a href="../">Home</a>
         </form>
         <?php require_once("../components/footer.php"); ?>
 </body>

@@ -6,6 +6,10 @@ p {
     color: aliceblue;
 }
 
+h2{
+    color: aliceblue;
+}
+
 /* navbar css */
 .navbody {
     background-color: #393646;
@@ -35,7 +39,7 @@ p {
     background-color: #4F4557;
 }
 .index_body {
-    width: 95%;
+    width: 90%;
     margin: auto;
 }
 .cards-layout {
@@ -101,4 +105,15 @@ p {
 .edit_footer {
     display: flex;
     padding: 3px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#Warn{
+    background-color: #c83434;
+    color: aliceblue;
 }
